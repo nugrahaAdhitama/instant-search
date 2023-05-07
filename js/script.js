@@ -1,30 +1,26 @@
 const searchInput = document.getElementById("searchInput");
 const searchList = document.getElementById("searchList");
 
-const items = [
-    "Apple",
-    "Banana",
-    "Cherry",
-    "Date",
-    "Fig",
-    "Grape",
-    "Kiwi",
-    "Lemon",
-    "Mango",
-    "Orange",
-    "Peach",
-    "Plum",
-    "Raspberry",
-    "Strawberry",
-    "Tangerine",
-    "Watermelon"
-];
-
-function updateSearchList() {
-    const searchValue = searchInput.value.toLowerCase();
-    const filteredItems = items.filter(item => item.toLowerCase().includes(searchValue));
-    searchList.innerHTML = filteredItems.map(item => `<li>${item}</li>`).join("");
+async function fetchData() {
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return [];
+    }
 }
 
-searchInput.addEventListener("input", updateSearchList);
-updateSearchList();
+fetchData().then(users => {
+    const items = users.map(user => user.name);
+
+    function updateSearchList() {
+        const searchValue = searchInput.value.toLowerCase();
+        const filteredItems = items.filter(item => item.toLowerCase().includes(searchValue));
+        searchList.innerHTML = filteredItems.map(item => `<li>${item}</li>`).join("");
+    }
+    
+    searchInput.addEventListener("input", updateSearchList);
+    updateSearchList();
+})

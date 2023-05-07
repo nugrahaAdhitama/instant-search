@@ -1,0 +1,9 @@
+Pencarian dengan sumber data eksternal: Anda dapat menggantikan daftar item statis yang ada dalam js/script.js dengan data dari API atau sumber eksternal lainnya. Dengan cara ini, aplikasi akan menjadi lebih dinamis dan mendukung lebih banyak data.
+
+Paginasi atau lazy-loading: Jika hasil pencarian mencakup banyak item, Anda bisa menambahkan fitur paginasi atau lazy-loading untuk memuat sebagian item dan meningkatkan kinerja aplikasi.
+
+Sorting dan filtering tambahan: Anda bisa menambahkan opsi untuk mengurutkan hasil pencarian berdasarkan berbagai kriteria (misalnya, abjad atau popularitas) dan menyediakan filter tambahan untuk membantu pengguna menyaring hasil pencarian lebih lanjut.
+
+Highlight pencarian: Anda dapat menambahkan highlight pada teks pencarian yang cocok dalam hasil pencarian untuk membantu pengguna lebih mudah mengidentifikasi kata kunci yang mereka cari dalam item yang ditampilkan.
+
+Responsive design: Meskipun aplikasi Anda sudah memiliki tampilan yang modern, Anda dapat mengoptimalkan desain responsif lebih lanjut untuk berbagai ukuran layar dan perangkat, termasuk ponsel dan tablet.
