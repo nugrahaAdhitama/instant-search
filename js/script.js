@@ -1,5 +1,7 @@
 const searchInput = document.getElementById("searchInput");
 const searchList = document.getElementById("searchList");
+let currentPage = 1;
+const itemsPerPage = 10;
 
 async function fetchData() {
     try {
@@ -18,9 +20,21 @@ fetchData().then(users => {
     function updateSearchList() {
         const searchValue = searchInput.value.toLowerCase();
         const filteredItems = items.filter(item => item.toLowerCase().includes(searchValue));
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const visibleItems = filteredItems.slice(startIndex, endIndex);
         searchList.innerHTML = filteredItems.map(item => `<li>${item}</li>`).join("");
     }
-    
+
     searchInput.addEventListener("input", updateSearchList);
     updateSearchList();
+})
+
+window.addEventListener("scroll", () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        loader.style.display = "block";
+        currentPage++;
+        updateSearchList();
+        loader.style.display = "none";
+    }
 })
